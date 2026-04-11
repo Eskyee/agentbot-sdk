@@ -1,0 +1,20 @@
+{
+  "name": "@agentbot/cli",
+  "version": "0.1.0",
+  "description": "Agentbot CLI — Build, run, and deploy AI agents",
+  "bin": {
+    "agentbot": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eskyee/agentbot-sdk"
+  }
+}

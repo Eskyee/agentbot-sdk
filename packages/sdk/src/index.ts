@@ -9,6 +9,13 @@
 export { parseAgentFile, parseAgentContent, loadAgentsFromDir } from './agent/parser';
 export type { AgentDefinition, AgentConfig, PermissionLevel } from './agent/definition';
 
+// Tools
+export { defineTool } from './tools/index';
+export type { ToolDefinition, ToolParameter } from './tools/index';
+
+// Types
+export type { Agent, Tool, Workflow, WorkflowStep, Memory } from './types/index';
+
 // Orchestration
 export { classifyTool, classifyTools } from './orchestration/tool-classifier';
 export type { ToolClassification, ConcurrencyClass } from './orchestration/tool-classifier';
