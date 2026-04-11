@@ -13,6 +13,10 @@ export type { AgentDefinition, AgentConfig, PermissionLevel } from './agent/defi
 export { defineTool } from './tools/index';
 export type { ToolDefinition, ToolParameter } from './tools/index';
 
+// Plugins
+export { definePlugin } from './plugins/index';
+export type { Plugin, PluginTool, PluginParameter, PluginContext } from './plugins/index';
+
 // Types
 export type { Agent, Tool, Workflow, WorkflowStep, Memory } from './types/index';
 

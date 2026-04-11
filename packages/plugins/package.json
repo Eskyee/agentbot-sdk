@@ -1,0 +1,21 @@
+{
+  "name": "@agentbot/plugins",
+  "version": "0.1.0",
+  "description": "Official Agentbot plugins — Discord, Telegram, email, browser",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@agentbot/sdk": "0.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eskyee/agentbot-sdk"
+  }
+}
