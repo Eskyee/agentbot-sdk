@@ -5,6 +5,12 @@
 Build, compose, and deploy autonomous AI agents. Open-source infrastructure for the agent economy.
 
 ```bash
+curl -fsSL agentbot.sh/install | bash
+```
+
+One command. Your agent is running on your machine — connected to Telegram, Discord, or WhatsApp. Your API key talks directly to your LLM provider. We don't touch the costs.
+
+```bash
 npx agentbot init     # Create your first agent
 npx agentbot dev      # Run locally
 npx agentbot deploy   # Ship to production
