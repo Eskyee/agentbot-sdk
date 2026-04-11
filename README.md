@@ -104,6 +104,8 @@ export const myPlugin = definePlugin({
 - **[Research Agent](./examples/research-agent)** — Web research and analysis
 - **[Outreach Agent](./examples/outreach-agent)** — Lead generation and cold messaging
 - **[Content Agent](./examples/content-agent)** — Blog posts, social media, documentation
+- **[Crypto Analyst](./examples/crypto-analyst)** — Autonomous 24/7 market scanner
+- **[Barista Agent](./examples/barista-agent)** — Morning motivation (5 AM survival mode)
 - **[Multi-Agent Workflow](./examples/multi-agent-workflow)** — Compose agents into pipelines
 
 ## Architecture
@@ -171,7 +173,10 @@ cd agentbot-sdk
 npm install
 npm run build
 
-# Run your agents
+# Run with Docker
+OPENROUTER_API_KEY=sk-... docker compose up
+
+# Or run directly
 npx agentbot run examples/research-agent/agent.md
 ```
 
