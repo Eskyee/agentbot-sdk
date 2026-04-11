@@ -52,9 +52,52 @@ npx agentbot deploy
 
 | Package | Description |
 |---------|-------------|
-| `@agentbot/sdk` | Core SDK — agent parser, orchestration, tool interface |
-| `@agentbot/cli` | Developer CLI — init, dev, test, deploy |
+| `@agentbot/sdk` | Core SDK — agent parser, orchestration, plugins, types |
+| `@agentbot/cli` | Developer CLI — init, dev, run |
 | `@agentbot/plugins` | Official integrations — Discord, Telegram, email, browser |
+
+## Plugins
+
+Extend agents with capabilities:
+
+```typescript
+import { discordPlugin, telegramPlugin } from '@agentbot/plugins'
+
+// Plugins provide tools agents can use
+const agent = new Agent({
+  tools: ['discord_send', 'telegram_send', 'email_send', 'browser_navigate']
+})
+```
+
+| Plugin | Tools |
+|--------|-------|
+| Discord | `discord_send`, `discord_read` |
+| Telegram | `telegram_send`, `telegram_webhook` |
+| Email | `email_send`, `email_template` |
+| Browser | `browser_navigate`, `browser_scrape`, `browser_screenshot` |
+
+Build your own plugin:
+
+```typescript
+import { definePlugin, defineTool } from '@agentbot/sdk'
+
+export const myPlugin = definePlugin({
+  name: 'my-integration',
+  description: 'Custom integration',
+  version: '0.1.0',
+  tools: [
+    defineTool({
+      name: 'my_tool',
+      description: 'Does something useful',
+      parameters: { input: { type: 'string', required: true } },
+      async execute(args, ctx) {
+        ctx.log(`Running with: ${args.input}`)
+        return { result: 'done' }
+      }
+    })
+  ]
+})
+```
 
 ## Examples
 
