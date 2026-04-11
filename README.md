@@ -158,6 +158,14 @@ We welcome contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guideline
 - Write documentation
 - Report bugs
 
+## Ecosystem
+
+Agentbot is part of a growing ecosystem:
+
+- **$AGENTBOT** — Community token on [Base](https://basescan.org/token/0x986b41c76ab8b7350079613340ee692773b34ba3) and [Solana](https://pump.fun)
+- **[Agentbot Cloud](https://agentbot.sh)** — Managed deployment platform
+- **[baseFM](https://basefm.space)** — Onchain radio platform
+
 ## License
 
 MIT
