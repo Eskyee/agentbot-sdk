@@ -7,7 +7,7 @@ All notable changes to Agentbot will be documented in this file.
 ### Added
 - **Agent Spec** — Markdown + YAML frontmatter format for defining agents
 - **SDK** (`@agentbot/sdk`) — Agent parser, orchestration engine, plugin interface, types
-- **CLI** (`@agentbot/cli`) — `init`, `dev`, `run`, `test` commands
+- **CLI** (`@agentbot/cli`) — `init`, `dev`, `run`, `test`, `bundle` commands
 - **Plugins** (`@agentbot/plugins`) — Discord, Telegram, email, browser integrations
 - **Orchestration** — Automatic parallel reads, serial writes for tool execution
 - **createAgent()** — Programmatic agent creation API

@@ -4,6 +4,7 @@ import { initCommand } from './commands/init.js';
 import { runCommand } from './commands/run.js';
 import { devCommand } from './commands/dev.js';
 import { testCommand } from './commands/test.js';
+import { bundleCommand } from './commands/bundle.js';
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -64,8 +65,7 @@ async function main() {
       break;
 
     case 'bundle':
-      console.log('  📦 agentbot bundle — coming in v0.2.0');
-      console.log('  Package agent for deployment');
+      await bundleCommand(args.slice(1));
       break;
 
     case 'deploy':
