@@ -5,6 +5,7 @@ import { runCommand } from './commands/run.js';
 import { devCommand } from './commands/dev.js';
 import { testCommand } from './commands/test.js';
 import { bundleCommand } from './commands/bundle.js';
+import { deployCommand } from './commands/deploy.js';
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -69,8 +70,7 @@ async function main() {
       break;
 
     case 'deploy':
-      console.log('  🚀 agentbot deploy — coming in v0.2.0');
-      console.log('  Deploy to Agentbot Cloud: https://agentbot.sh');
+      await deployCommand(args.slice(1));
       break;
 
     default:
