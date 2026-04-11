@@ -3,6 +3,7 @@
 import { initCommand } from './commands/init.js';
 import { runCommand } from './commands/run.js';
 import { devCommand } from './commands/dev.js';
+import { testCommand } from './commands/test.js';
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -59,8 +60,7 @@ async function main() {
       break;
 
     case 'test':
-      console.log('  🧪 agentbot test — coming in v0.2.0');
-      console.log('  Run agent validation: agentbot run <agent.md>');
+      await testCommand(args.slice(1));
       break;
 
     case 'bundle':
