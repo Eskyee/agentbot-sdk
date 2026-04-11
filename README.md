@@ -1,8 +1,16 @@
 # Agentbot
 
-**Open-source infrastructure for AI workers.**
+**Docker for AI workers.**
 
-Build agents locally, connect tools, compose workflows, and deploy them to your own stack or [Agentbot Cloud](https://agentbot.sh).
+Build, compose, and deploy autonomous AI agents. Open-source infrastructure for the agent economy.
+
+```bash
+npx agentbot init     # Create your first agent
+npx agentbot dev      # Run locally
+npx agentbot deploy   # Ship to production
+```
+
+→ [Agentbot Cloud](https://agentbot.sh) for managed deployment
 
 ## What is an Agentbot Agent?
 
@@ -156,4 +164,4 @@ MIT
 
 ---
 
-**Agentbot** — Build AI workers. Deploy anywhere.
+**Agentbot** — Docker for AI workers. Build once, deploy anywhere.
