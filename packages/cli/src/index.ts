@@ -2,37 +2,46 @@
 
 import { initCommand } from './commands/init.js';
 import { runCommand } from './commands/run.js';
+import { devCommand } from './commands/dev.js';
 
 const args = process.argv.slice(2);
 const command = args[0];
 
+const VERSION = '0.1.0';
+
 const HELP = `
-  agentbot — Build, run, and deploy AI agents
+  agentbot v${VERSION} — Docker for AI workers
 
   USAGE
     agentbot <command> [options]
 
   COMMANDS
-    init              Create a new agent project
-    dev               Start agent dev server
-    run <agent.md>    Run an agent definition file
-    test              Run agent tests
-    bundle            Bundle agent for deployment
-    deploy            Deploy to Agentbot Cloud
-    --help            Show this help message
+    init [dir]          Create a new agent project
+    dev [dir]           Watch agent files for changes
+    run <agent.md>      Validate and display agent definition
+    --version           Show version
+    --help              Show this help message
 
   EXAMPLES
     agentbot init                    Create starter agent.md
-    agentbot run my-agent.md         Parse and run an agent
-    agentbot deploy                  Deploy to Agentbot Cloud
+    agentbot dev                     Watch current directory
+    agentbot run my-agent.md         Validate an agent definition
 
   DOCS
     https://github.com/Eskyee/agentbot-sdk
+
+  AGENTBOT CLOUD
+    https://agentbot.sh
 `;
 
 async function main() {
   if (!command || command === '--help' || command === '-h') {
     console.log(HELP);
+    process.exit(0);
+  }
+
+  if (command === '--version' || command === '-v') {
+    console.log(`agentbot v${VERSION}`);
     process.exit(0);
   }
 
@@ -46,25 +55,22 @@ async function main() {
       break;
 
     case 'dev':
-      console.log('  ⚙️  Starting agent dev server...');
-      console.log('  (dev server coming in v0.2.0)');
+      await devCommand(args.slice(1));
       break;
 
     case 'test':
-      console.log('  🧪 Running agent tests...');
-      console.log('(test runner coming in v0.2.0)');
+      console.log('  🧪 agentbot test — coming in v0.2.0');
+      console.log('  Run agent validation: agentbot run <agent.md>');
       break;
 
     case 'bundle':
-      console.log('  📦 Bundling agent for deployment...');
-      console.log('  (bundler coming in v0.2.0)');
+      console.log('  📦 agentbot bundle — coming in v0.2.0');
+      console.log('  Package agent for deployment');
       break;
 
     case 'deploy':
-      console.log('  🚀 Deploying to Agentbot Cloud...');
-      console.log('  (deploy coming in v0.2.0)');
-      console.log('');
-      console.log('  For now, visit https://agentbot.sh to deploy manually.');
+      console.log('  🚀 agentbot deploy — coming in v0.2.0');
+      console.log('  Deploy to Agentbot Cloud: https://agentbot.sh');
       break;
 
     default:

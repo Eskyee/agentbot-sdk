@@ -16,37 +16,68 @@ export async function runCommand(args: string[]) {
     process.exit(1);
   }
 
-  // Parse the agent definition (inline parser for CLI — no SDK dependency at runtime)
   const content = readFileSync(resolved, 'utf-8');
   const agent = parseAgent(content, resolved);
 
   console.log('');
-  console.log('  🤖 Agent Definition');
-  console.log('  ─────────────────────');
+  console.log('  🤖 Agent Boot');
+  console.log('  ═══════════════════════════════');
   console.log(`  Name:        ${agent.name}`);
   console.log(`  Description: ${agent.description}`);
   console.log(`  Model:       ${agent.model}`);
   console.log(`  Tools:       ${agent.tools.join(', ')}`);
   console.log(`  Permissions: ${formatPermissions(agent.permissions)}`);
-  console.log(`  Source:      ${resolved}`);
+  console.log('  ═══════════════════════════════');
   console.log('');
 
+  // Show instruction preview
   if (agent.instruction) {
+    const lines = agent.instruction.split('\n').filter(l => l.trim());
     console.log('  📝 Instructions:');
     console.log('  ─────────────────');
-    // Print first 5 lines of instruction
-    const lines = agent.instruction.split('\n').slice(0, 5);
-    for (const line of lines) {
+    for (const line of lines.slice(0, 8)) {
       console.log(`  ${line}`);
     }
-    if (agent.instruction.split('\n').length > 5) {
-      console.log('  ...');
+    if (lines.length > 8) {
+      console.log(`  ... (+${lines.length - 8} more lines)`);
     }
     console.log('');
   }
 
-  console.log('  ✅ Agent parsed successfully.');
-  console.log('  (Full execution coming in v0.2.0)');
+  // Validate
+  const warnings: string[] = [];
+  if (!agent.name) warnings.push('Missing name');
+  if (!agent.description) warnings.push('Missing description');
+  if (agent.tools.length === 0) warnings.push('No tools defined');
+  if (!agent.instruction) warnings.push('No instructions');
+
+  if (warnings.length > 0) {
+    console.log('  ⚠️  Warnings:');
+    for (const w of warnings) {
+      console.log(`    • ${w}`);
+    }
+    console.log('');
+  }
+
+  // Tool permission summary
+  if (agent.tools.length > 0) {
+    console.log('  🔐 Tool Permissions:');
+    for (const tool of agent.tools) {
+      const perm = agent.permissions[tool] || 'safe';
+      const icon = perm === 'safe' ? '✅' : perm === 'dangerous' ? '⚠️' : '🚫';
+      console.log(`    ${icon} ${tool} → ${perm}`);
+    }
+    console.log('');
+  }
+
+  console.log('  ✅ Agent validated successfully.');
+  console.log('');
+  console.log('  To execute this agent, connect to Agentbot Cloud:');
+  console.log('    agentbot deploy');
+  console.log('');
+  console.log('  Or run locally with an LLM API key:');
+  console.log('    OPENROUTER_API_KEY=sk-... agentbot run ' + filePath + ' --live');
+  console.log('');
 }
 
 function parseAgent(content: string, source: string) {
@@ -83,7 +114,6 @@ function parseSimpleYaml(yaml: string): Record<string, any> {
   for (const line of yaml.split('\n')) {
     const kvMatch = line.match(/^(\w+):\s*(.+)$/);
     if (kvMatch) {
-      // Flush previous object
       if (currentKey && Object.keys(currentObject).length > 0) {
         result[currentKey] = { ...currentObject };
         currentObject = {};
