@@ -6,6 +6,7 @@ import { devCommand } from './commands/dev.js';
 import { testCommand } from './commands/test.js';
 import { bundleCommand } from './commands/bundle.js';
 import { deployCommand } from './commands/deploy.js';
+import { listCommand } from './commands/list.js';
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -20,8 +21,12 @@ const HELP = `
 
   COMMANDS
     init [dir]          Create a new agent project
+    list [dir]          List all agents in project
     dev [dir]           Watch agent files for changes
     run <agent.md>      Validate and display agent definition
+    test [dir]          Validate all agents
+    bundle [dir]        Package agents for deployment
+    deploy [dir]        Deploy to Agentbot Cloud
     --version           Show version
     --help              Show this help message
 
@@ -71,6 +76,11 @@ async function main() {
 
     case 'deploy':
       await deployCommand(args.slice(1));
+      break;
+
+    case 'list':
+    case 'ls':
+      await listCommand(args.slice(1));
       break;
 
     default:
