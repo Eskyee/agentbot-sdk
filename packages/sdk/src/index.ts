@@ -7,7 +7,9 @@
 
 // Agent
 export { parseAgentFile, parseAgentContent, loadAgentsFromDir } from './agent/parser';
+export { createAgent, agentToMarkdown } from './agent/builder';
 export type { AgentDefinition, AgentConfig, PermissionLevel } from './agent/definition';
+export type { AgentBuilderOptions } from './agent/builder';
 
 // Tools
 export { defineTool } from './tools/index';

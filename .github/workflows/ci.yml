@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type check SDK
+        run: cd packages/sdk && npx tsc --noEmit
+
+      - name: Type check CLI
+        run: cd packages/cli && npx tsc --noEmit
+
+      - name: Build SDK
+        run: cd packages/sdk && npx tsc
+
+      - name: Build CLI
+        run: cd packages/cli && npx tsc
+
+      - name: Validate example agents
+        run: |
+          for agent in examples/*/agent.md; do
+            echo "Validating $agent..."
+            if ! head -1 "$agent" | grep -q "^---"; then
+              echo "ERROR: $agent missing YAML frontmatter"
+              exit 1
+            fi
+          done
+          echo "All agents valid ✓"
