@@ -1,0 +1,37 @@
+# Agentbot — Self-Host
+#
+# Run agents locally with Docker.
+# Requires: Docker + OpenRouter API key
+#
+# Usage:
+#   OPENROUTER_API_KEY=sk-... docker compose up
+#
+# Then:
+#   agentbot run examples/research-agent/agent.md
+
+services:
+  agentbot:
+    image: node:20-slim
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - agent-memory:/app/memory
+    environment:
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - AGENTBOT_ENV=local
+    command: >
+      sh -c "npm install && npx agentbot dev"
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  # Optional: Redis for agent memory persistence
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+volumes:
+  agent-memory:
+  redis-data:

@@ -1,9 +1,12 @@
 {
   "name": "@agentbot/cli",
   "version": "0.1.0",
-  "description": "Agentbot CLI — Build, run, and deploy AI agents",
+  "description": "Agentbot CLI — Docker for AI workers",
   "bin": {
     "agentbot": "./dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc",
