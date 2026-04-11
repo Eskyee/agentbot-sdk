@@ -1,0 +1,25 @@
+---
+name: Bug Report
+about: Report a bug in the SDK or CLI
+title: '[BUG] '
+labels: bug
+assignees: ''
+---
+
+## Description
+<!-- What happened? -->
+
+## Steps to Reproduce
+1. Run `agentbot ...`
+2. ...
+
+## Expected Behavior
+<!-- What should have happened? -->
+
+## Actual Behavior
+<!-- What actually happened? -->
+
+## Environment
+- OS: [e.g. macOS 15, Ubuntu 24]
+- Node: [e.g. v22.0]
+- Agentbot CLI: [e.g. v0.1.0]

@@ -1,0 +1,42 @@
+---
+name: New Agent
+about: Submit an agent to the Agentbot ecosystem
+title: '[AGENT] '
+labels: agent
+assignees: ''
+---
+
+## Agent Name
+<!-- e.g. crypto-trader -->
+
+## Description
+<!-- What does this agent do? One line. -->
+
+## Agent Definition
+<!-- Paste your agent.md content -->
+```markdown
+---
+name: 
+description: 
+model: openrouter/anthropic/claude-3.5-sonnet
+tools: []
+permissions:
+  tool: safe
+---
+
+# Agent Name
+
+Instructions here.
+```
+
+## Use Case
+<!-- Who would use this agent? What problem does it solve? -->
+
+## Category
+- [ ] Research
+- [ ] Outreach / Sales
+- [ ] Content / Marketing
+- [ ] Trading / Finance
+- [ ] Automation
+- [ ] Development
+- [ ] Other
