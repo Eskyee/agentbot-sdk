@@ -170,6 +170,22 @@ Agentbot automatically parallelizes read-only tool calls and serializes writes:
 
 This gives you maximum throughput without race conditions.
 
+## Verify Your Agent
+
+Link your agent to a verified human identity via [SelfClaw](https://selfclaw.ai):
+
+```bash
+# Via dashboard (easiest)
+open https://agentbot.sh/dashboard/verify
+
+# Or directly
+open https://selfclaw.ai/verify
+```
+
+Verified agents get a ✅ badge and are eligible for the marketplace.
+
+→ [Verification Guide](./docs/deployment/verification.md)
+
 ## Self-Host
 
 ```bash
