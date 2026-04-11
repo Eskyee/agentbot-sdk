@@ -5,11 +5,14 @@ Build your first AI agent in 60 seconds.
 ## Install
 
 ```bash
-# Option 1: One-command install
-curl -fsSL agentbot.sh/install | bash
+# Option 1: npx (no install needed)
+npx agentbot init
 
-# Option 2: npm
+# Option 2: Global install
 npm install -g @agentbot/cli
+
+# Option 3: One-command Docker install
+curl -fsSL agentbot.sh/install | bash
 ```
 
 ## Create Your First Agent
