@@ -2,6 +2,20 @@
 
 All notable changes to Agentbot will be documented in this file.
 
+## [0.2.0] — 2026-04-29
+
+### Added
+- **4 Marketplace Templates** — Production-ready agent definitions from Agentbot Cloud
+  - THE-STRATEGIST — Mission planning, logistics, resource allocation (DeepSeek R1)
+  - CREW-MANAGER — Royalty splits, talent booking, treasury (Llama 3.3)
+  - SOUND-SYSTEM — Mux monitoring, $RAVE gating, live feedback (Mistral 7B)
+  - THE-DEVELOPER — Code gen, scripting, contract audit (Qwen 2.5)
+- **Marketplace integration** — Templates now sourced from database, not hardcoded
+
+### Changed
+- README updated with marketplace templates section
+- Examples split into Marketplace Templates and Community Examples
+
 ## [0.1.0] — 2026-04-11
 
 ### Added
