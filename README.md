@@ -107,6 +107,13 @@ export const myPlugin = definePlugin({
 
 ## Examples
 
+### Marketplace Templates (Production)
+- **[The Strategist](./examples/the-strategist)** — Mission planning, logistics, resource allocation (DeepSeek R1)
+- **[Crew Manager](./examples/crew-manager)** — Royalty splits, talent booking, treasury (Llama 3.3)
+- **[Sound System](./examples/sound-system)** — Mux monitoring, $RAVE gating, live feedback (Mistral 7B)
+- **[The Developer](./examples/the-developer)** — Code gen, scripting, contract audit (Qwen 2.5)
+
+### Community Examples
 - **[Research Agent](./examples/research-agent)** — Web research and analysis
 - **[Outreach Agent](./examples/outreach-agent)** — Lead generation and cold messaging
 - **[Content Agent](./examples/content-agent)** — Blog posts, social media, documentation
