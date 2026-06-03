@@ -1,31 +1,61 @@
 /**
- * Agentbot SDK — Public
+ * @agentbot/sdk — TypeScript SDK for the Agentbot platform.
  *
- * Open-source SDK for building AI agents.
- * Define, compose, and deploy autonomous workers.
+ * Provision agents, send messages, manage skills, and handle x402 micropayments.
  */
 
-// Agent
-export { parseAgentFile, parseAgentContent, loadAgentsFromDir } from './agent/parser';
-export { createAgent, agentToMarkdown } from './agent/builder';
-export type { AgentDefinition, AgentConfig, PermissionLevel } from './agent/definition';
-export type { AgentBuilderOptions } from './agent/builder';
+// ── Client ───────────────────────────────────────────────────────────────────
+export { AgentbotClient } from './client.js';
 
-// Tools
-export { defineTool } from './tools/index';
-export type { ToolDefinition, ToolParameter } from './tools/index';
+// ── Types ────────────────────────────────────────────────────────────────────
+export type {
+  AgentbotConfig,
+  WalletConfig,
+  ChatMessage,
+  ChatRequest,
+  ChatResponse,
+  StreamChunk,
+  TokenUsage,
+  ToolCall,
+  Model,
+  Agent,
+  PersonalityType,
+  CreateAgentRequest,
+  UpdateAgentRequest,
+  Skill,
+  SkillTool,
+  McpServerConfig,
+  WalletBalance,
+  TransferRequest,
+  PaymentRecord,
+  SpendLimit,
+  HealthStatus,
+  McpToolCall,
+  McpToolResult,
+  McpServiceInfo,
+  X402PaymentRequest,
+  X402PaymentResponse,
+  MarketplaceDiscoverRequest,
+  MarketplaceDiscoverResponse,
+} from './types.js';
 
-// Plugins
-export { definePlugin } from './plugins/index';
-export type { Plugin, PluginTool, PluginParameter, PluginContext } from './plugins/index';
+// ── Errors ───────────────────────────────────────────────────────────────────
+export {
+  AgentbotError,
+  PaymentRequiredError,
+  RateLimitError,
+} from './types.js';
 
-// Types
-export type { Agent, Tool, Workflow, WorkflowStep, Memory } from './types/index';
+// ── Re-export MCP client for convenience ─────────────────────────────────────
+export { McpClient, McpServer } from './mcp.js';
+export type {
+  McpClientConfig,
+  McpServerInfo,
+  CallToolOptions,
+  CallToolResult,
+  ActivateOptions,
+  DeactivateOptions,
+} from './mcp.js';
 
-// Orchestration
-export { classifyTool, classifyTools } from './orchestration/tool-classifier';
-export type { ToolClassification, ConcurrencyClass } from './orchestration/tool-classifier';
-export { partitionBatches, getPartitionStats } from './orchestration/batch-partitioner';
-export type { ToolCall, ClassifiedTool, ExecutionBatch, PartitionStats } from './orchestration/batch-partitioner';
-export { executeConcurrent, dryRun } from './orchestration/concurrent-executor';
-export type { ToolResult, ExecutionResult, ToolExecutor } from './orchestration/concurrent-executor';
+// ── Re-export x402 helpers for convenience ───────────────────────────────────
+export * as x402 from './x402.js';

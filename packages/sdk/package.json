@@ -1,33 +1,62 @@
 {
-  "name": "agentbot-sdk",
+  "name": "@agentbot/sdk",
   "version": "0.1.0",
-  "description": "Open-source SDK for building AI agents. Define, compose, and deploy autonomous workers.",
-  "license": "MIT",
+  "description": "TypeScript SDK for the Agentbot platform — agents, chat, MCP, and x402 payments",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./agent": "./dist/agent/index.js",
-    "./orchestration": "./dist/orchestration/index.js",
-    "./hooks": "./dist/hooks/index.js",
-    "./tools": "./dist/tools/index.js",
-    "./types": "./dist/types/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./mcp": {
+      "types": "./dist/mcp.d.ts",
+      "import": "./dist/mcp.js",
+      "require": "./dist/mcp.cjs"
+    },
+    "./x402": {
+      "types": "./dist/x402.d.ts",
+      "import": "./dist/x402.js",
+      "require": "./dist/x402.cjs"
+    }
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
-    "build": "tsc",
-    "test": "vitest",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "tsc --noEmit",
-    "dev": "tsc --watch"
+    "prepublishOnly": "npm run build"
   },
-  "dependencies": {},
+  "keywords": [
+    "agentbot",
+    "ai",
+    "agents",
+    "mcp",
+    "x402",
+    "payments",
+    "openclaw"
+  ],
+  "author": "Agentbot",
+  "license": "MIT",
   "devDependencies": {
-    "typescript": "^5.4.0",
-    "vitest": "^1.6.0"
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0"
+  },
+  "peerDependencies": {
+    "@x402/core": ">=0.1.0"
+  },
+  "peerDependenciesMeta": {
+    "@x402/core": {
+      "optional": true
+    }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Eskyee/agentbot-sdk"
-  },
-  "keywords": ["ai", "agents", "automation", "workforce", "llm", "openclaw"]
+    "url": "https://github.com/Eskyee/agentbot",
+    "directory": "web/packages/sdk"
+  }
 }
